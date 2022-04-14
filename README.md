@@ -72,3 +72,6 @@ Statuses in project are implemented as enum.
   * If you don't have enough money on your balance, the status will be a FAILED.
   * If you canceled the payment, the status will be CANCELLED
 
+#### Testing
+
+The methods in the project are covered by JUnit testing.
