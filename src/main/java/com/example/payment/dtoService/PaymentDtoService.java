@@ -11,5 +11,6 @@ public interface PaymentDtoService {
     ResponsePaymentDto getById(Long id);
     List<PaymentDto> getAll();
     PaymentDto create(CreatePaymentDto createPaymentDto);
+    Status getStatus(Long id);
     Status cancel(Long id);
 }

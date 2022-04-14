@@ -28,6 +28,11 @@ public class PaymentController {
         return paymentDtoService.getAll();
     }
 
+    @GetMapping("/status/{id}")
+    public Status getStatus(@PathVariable("id") Long id) {
+        return paymentDtoService.getStatus(id);
+    }
+
     @PostMapping
     public PaymentDto create(@RequestBody CreatePaymentDto createPaymentDto) {
         return paymentDtoService.create(createPaymentDto);

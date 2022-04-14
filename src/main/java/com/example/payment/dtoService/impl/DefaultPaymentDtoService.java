@@ -7,7 +7,7 @@ import com.example.payment.dtoService.PaymentDtoService;
 import com.example.payment.entity.Client;
 import com.example.payment.entity.Payment;
 import com.example.payment.entity.enums.Status;
-import com.example.payment.exception.PaymentIsCancelled;
+import com.example.payment.exception.PaymentIsCancelledException;
 import com.example.payment.mapper.PaymentMapper;
 import com.example.payment.service.ClientService;
 import com.example.payment.service.PaymentService;
@@ -69,6 +69,13 @@ public class DefaultPaymentDtoService implements PaymentDtoService {
     }
 
     @Override
+    public Status getStatus(Long id) {
+        Payment payment = paymentService.getById(id);
+
+        return payment.getStatus();
+    }
+
+    @Override
     public Status cancel(Long id) {
         Payment payment = paymentService.getById(id);
 
@@ -84,7 +91,7 @@ public class DefaultPaymentDtoService implements PaymentDtoService {
 
             return payment.getStatus();
         } else {
-            throw new PaymentIsCancelled("The payment has already been canceled!");
+            throw new PaymentIsCancelledException("The payment has already been canceled!");
         }
     }
 }
